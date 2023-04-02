@@ -5,6 +5,10 @@ Share an item for rent for somebody nearby.
 Rent - when you're not using it - to earn.
 Borrow - when you need
 
+##Demo
+
+https://q270311.github.io/share-stuff/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
