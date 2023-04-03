@@ -1,4 +1,4 @@
-# Share stuff ads portal
+# Rent Locally ads portal
 
 This is ads portal.
 Share an item for rent for somebody nearby.
