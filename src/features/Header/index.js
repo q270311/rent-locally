@@ -1,10 +1,32 @@
-import { Wrapper, TitleLine1, TitleLine2 } from "./styled";
+import { useState, useEffect } from "react";
+import { Wrapper, Subtitle } from "./styled";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 70) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Wrapper>
-      <TitleLine1>Rent - when you're not using - to earn</TitleLine1>
-      <TitleLine2>Borrow - if you need and pay only for use</TitleLine2>      
+    <Wrapper isScrolled={isScrolled}>
+      <h1>Rent Locally</h1>
+      <Subtitle isScrolled={isScrolled}> Rent, when you're not using,</Subtitle>
+      <Subtitle isScrolled={isScrolled}>
+        {" "}
+        borrow - if you need and pay only for use
+      </Subtitle>
     </Wrapper>
   );
 };
