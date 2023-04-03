@@ -1,10 +1,12 @@
-
-
-import StuffList from '../features/stuffList'
+import StuffList from "../features/stuffList";
+import Header from "../features/Header";
 
 function App() {
   return (
-    <StuffList />
+    <>
+      <Header />
+      <StuffList />
+    </>
   );
 }
 
