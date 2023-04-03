@@ -7,7 +7,7 @@ Borrow - when you need
 
 ##Demo
 
-https://q270311.github.io/share-stuff/
+https://q270311.github.io/rent-locally/
 
 # Getting Started with Create React App
 
