@@ -3,7 +3,6 @@ import { Wrapper, Img } from "./styled";
 const StuffList = () => {
   return (
     <>
-      <h1>Najchętniej wypożyczane rzeczy</h1>
       <Wrapper>
         <Img
           src="https://sharestuff.somee.com/img/stuff/71tv1k2zdeL.__AC_SX300_SY300_QL70_ML2_.jpg"
