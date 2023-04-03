@@ -13,7 +13,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
-    margin: 100px auto;
     background-color: ${({ theme }) => theme.color.grey};
   }
 `;
