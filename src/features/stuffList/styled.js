@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`  
   max-width: 1200px;
-  margin: 0px auto;
+  margin: 180px auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
   gap: 24px;
