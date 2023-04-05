@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { Wrapper, Subtitle } from "./styled";
+import Search from "./Search";
+import {
+  StyledHeader,
+  Wrapper,
+  WrapperSubtitle,
+  Title,
+  Subtitle,
+  Button,
+} from "./styled";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,6 +20,7 @@ const Header = () => {
         setIsScrolled(false);
       }
     };
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -20,14 +29,17 @@ const Header = () => {
   }, []);
 
   return (
-    <Wrapper isScrolled={isScrolled}>
-      <h1>Rent Locally</h1>
-      <Subtitle isScrolled={isScrolled}> Rent, when you're not using,</Subtitle>
-      <Subtitle isScrolled={isScrolled}>
-        {" "}
-        borrow - if you need and pay only for use
-      </Subtitle>
-    </Wrapper>
+    <StyledHeader>
+      <Wrapper isScrolled={isScrolled}>
+        <Title>Rent Locally</Title>
+        <Search isScrolled={isScrolled} />
+        <WrapperSubtitle isScrolled={isScrolled}>
+          <Subtitle>Rent, when you're not using,</Subtitle>
+          <Subtitle>borrow - if you need and pay only for use</Subtitle>
+        </WrapperSubtitle>
+        <Button>Menu</Button>
+      </Wrapper>
+    </StyledHeader>
   );
 };
 
