@@ -11,6 +11,7 @@ export const StyledHeader = styled.header`
   -webkit-box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
   box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
+  z-index: 999;
 `;
 
 export const Wrapper = styled.div`
