@@ -1,51 +1,35 @@
-import { Wrapper, Img } from "./styled";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Wrapper, Tile, Img } from "./styled";
+
+const fetchStuff = async () =>
+  await axios
+    .get("https://sharestuff.onrender.com/api/stuff")
+    .then((response) => response.data);
 
 const StuffList = () => {
+  const { isLoading, error, data } = useQuery(["contributors"], fetchStuff);
+
+  if (isLoading) {
+    return <Wrapper>Trwa ładowanie...</Wrapper>;
+  }
+
+  if (error) {
+    return <Wrapper>{`Mamy błąd... ${error.message}`}</Wrapper>;
+  }
+
   return (
-    <>
-      <Wrapper>
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/71tv1k2zdeL.__AC_SX300_SY300_QL70_ML2_.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/500px_inzai%20hybrid.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/1580_3.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/71tv1k2zdeL.__AC_SX300_SY300_QL70_ML2_.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/pol_pm_Przyczepka-samochodowa-lekka-200-x-106.png"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/500px_inzai%20hybrid.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/1580_3.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/71tv1k2zdeL.__AC_SX300_SY300_QL70_ML2_.jpg"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/pol_pm_Przyczepka-samochodowa-lekka-200-x-106.png"
-          alt="stuff"
-        />
-        <Img
-          src="https://sharestuff.somee.com/img/stuff/1580_3.jpg"
-          alt="stuff"
-        />
-      </Wrapper>
-    </>
+    <Wrapper>
+      {data.map((stuff) => (
+        <Tile key={stuff.id}>
+          <Img
+            src={`https://sharestuff.somee.com/img/stuff/${stuff.img}`}
+            alt="stuff"
+          />
+          <p>{stuff.name}</p>
+        </Tile>
+      ))}
+    </Wrapper>
   );
 };
 

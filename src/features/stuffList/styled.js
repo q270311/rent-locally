@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`  
+export const Wrapper = styled.main`  
   max-width: 1200px;
   margin: 180px auto;
   display: grid;
@@ -15,6 +15,31 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Tile = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+
+  border: 1px solid ${({ theme }) => theme.color.cuttySark};
+  border-radius: 20px;
+
+  -webkit-box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
+  box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
+
+  transition: transform 1s linear;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.05)
+  }
+`
+
 export const Img = styled.img`    
   max-width: 324px;
+  border-radius: 20px;
+  margin:10px;
 `;
