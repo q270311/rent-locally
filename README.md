@@ -5,7 +5,7 @@ Share an item for rent for somebody nearby.
 Rent - when you're not using it - to earn.
 Borrow - when you need
 
-##Demo
+## Demo
 
 https://q270311.github.io/rent-locally/
 
