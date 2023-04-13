@@ -13,7 +13,7 @@ const Page = ({ content }) => (
 );
 
 const StuffList = () => {
-  const { isLoading, error, data } = useQuery(["stufs"], fetchStuff);
+  const { isLoading, error, data } = useQuery(["stuff"], fetchStuff);
   const [content, setContent] = useState(null);
   const BASE_URL = "https://sharestuff.somee.com/img/stuff/";
 
