@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { toStuffList } from "./routes";
-import StuffList from "../features/stuffList";
+import StuffList from "../features/StuffList";
 
 function App() {
   return (
