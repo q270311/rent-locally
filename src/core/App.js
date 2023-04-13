@@ -1,12 +1,15 @@
+import { Routes, Route, Navigate } from "react-router-dom";
+import { toStuffList } from "./routes";
 import StuffList from "../features/stuffList";
-import Header from "../features/Header";
 
 function App() {
   return (
-    <>
-      <Header />
-      <StuffList />
-    </>
+    <Routes>
+      <Route path={toStuffList()} element={<StuffList />} />
+      {/* <Route path={toStuffDetails()} element={<StuffDetails />} /> */}
+      <Route path="/" element={<Navigate to={toStuffList()} />} />
+      {/* <Route path='*' element={<Error />} /> */}
+    </Routes>
   );
 }
 
