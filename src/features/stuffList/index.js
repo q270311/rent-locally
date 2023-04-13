@@ -1,36 +1,42 @@
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Wrapper, Tile, Img } from "./styled";
+import fetchStuff from "./fetchStuff";
+import Header from "../Header";
+import { Wrapper, Tile, Img, StyledLink } from "./styled";
+import { nanoid } from "@reduxjs/toolkit";
 
-const fetchStuff = async () =>
-  await axios
-    .get("https://sharestuff.onrender.com/api/stuff")
-    .then((response) => response.data);
+const Page = ({ content }) => (
+  <>
+    <Header />
+    <Wrapper> {content} </Wrapper>
+  </>
+);
 
 const StuffList = () => {
-  const { isLoading, error, data } = useQuery(["contributors"], fetchStuff);
+  const { isLoading, error, data } = useQuery(["stufs"], fetchStuff);
+  const [content, setContent] = useState(null);
+  const BASE_URL = "https://sharestuff.somee.com/img/stuff/";
 
-  if (isLoading) {
-    return <Wrapper>Trwa ładowanie...</Wrapper>;
-  }
+  useEffect(() => {
+    if (isLoading) {
+      setContent(`Trwa ładowanie...`);
+    } else if (error) {
+      setContent(`Mamy błąd... ${error.message}`);
+    } else if (data) {
+      setContent(
+        data.map((stuff) => (
+           <StyledLink to={`/stuff/${stuff.id}`} key={nanoid()}> 
+            <Tile key={stuff.id}>
+              <Img src={`${BASE_URL}${stuff.img}`} alt="stuff" />
+              <p>{stuff.name}</p>
+            </Tile>
+           </StyledLink> 
+        ))
+      );
+    }
+  }, [isLoading, error, data]);
 
-  if (error) {
-    return <Wrapper>{`Mamy błąd... ${error.message}`}</Wrapper>;
-  }
-
-  return (
-    <Wrapper>
-      {data.map((stuff) => (
-        <Tile key={stuff.id}>
-          <Img
-            src={`https://sharestuff.somee.com/img/stuff/${stuff.img}`}
-            alt="stuff"
-          />
-          <p>{stuff.name}</p>
-        </Tile>
-      ))}
-    </Wrapper>
-  );
+  return <Page content={content} />;
 };
 
 export default StuffList;
