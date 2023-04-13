@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.main`  
   max-width: 1200px;
@@ -23,6 +24,7 @@ export const Tile = styled.div`
   padding: 10px;
   margin: 10px;
 
+  background-color: ${({ theme }) => theme.color.white};;
   border: 1px solid ${({ theme }) => theme.color.cuttySark};
   border-radius: 20px;
 
@@ -42,4 +44,9 @@ export const Img = styled.img`
   max-width: 324px;
   border-radius: 20px;
   margin:10px;
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    //color: ${({ theme }) => theme.color.black};
 `;
