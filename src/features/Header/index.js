@@ -7,7 +7,9 @@ import {
   Title,
   Subtitle,
   Button,
+  StyledLink,
 } from "./styled";
+import { toStuffList } from "../../core/routes";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,7 +33,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <Wrapper isScrolled={isScrolled}>
-        <Title>Rent Locally</Title>
+        <Title>
+          <StyledLink to={toStuffList()}>Rent Locally</StyledLink>
+        </Title>
         <Search isScrolled={isScrolled} />
         <WrapperSubtitle isScrolled={isScrolled}>
           <Subtitle>Rent, when you're not using,</Subtitle>

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Link } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -103,4 +104,9 @@ export const Button = styled.button`
     height: 30px;
     width: 250px;
   }
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: ${({ theme }) => theme.color.white};
 `;
