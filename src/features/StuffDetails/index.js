@@ -28,9 +28,12 @@ const StuffDetails = () => {
     } else if (data) {
       setContent(
         <>
-          <h1>{data[0].name}</h1>
-          <Img src={`${BASE_URL}${data[0].img}`} alt="stuff" />
-          <p>{data[0].description}</p>
+          <div>
+            <h1>{data[0].name}</h1>
+            <Img src={`${BASE_URL}${data[0].img}`} alt="stuff" />
+            <p>{data[0].description}</p>
+          </div>
+          <p>callender</p>
         </>
       );
     }

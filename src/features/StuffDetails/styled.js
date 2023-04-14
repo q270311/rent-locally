@@ -3,13 +3,15 @@ import styled from "styled-components";
 export const Wrapper = styled.main`  
   max-width: 1200px;
   margin: 180px auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDevice}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileDevice}px) {    
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 80px auto;
+    margin: 90px auto;
   }
 `;
 
