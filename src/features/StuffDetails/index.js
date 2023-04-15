@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchStuffDetails from "./fetchStuffDetails";
 import Header from "../Header";
+import Calender from "./Calender";
 import { Wrapper, Img } from "./styled";
 
 const Page = ({ content }) => (
@@ -33,7 +34,7 @@ const StuffDetails = () => {
             <Img src={`${BASE_URL}${data[0].img}`} alt="stuff" />
             <p>{data[0].description}</p>
           </div>
-          <p>callender</p>
+          <Calender />
         </>
       );
     }
