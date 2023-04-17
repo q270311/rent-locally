@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Wrapper = styled.div`
   padding-left: 20px;
@@ -16,18 +16,12 @@ export const Wrapper = styled.div`
     margin: 90px auto;
   }
 `;
+export const Button = styled.button`
+  margin:20px;
 
-export const Label = styled.label`
-  ${({ checked }) =>
-    checked &&
+  ${({ isHidden }) =>
+    isHidden &&
     css`
-      border: 1px solid ${({ theme }) => theme.color.orange};
-    `}
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      color ${({ theme }) => theme.color.grey};
-      border: 1px solid ${({ theme }) => theme.color.lightGrey};
+      display: none;
     `}
 `;
