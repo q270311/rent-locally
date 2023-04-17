@@ -3,39 +3,15 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchReservations from "./fetchReservations";
 import { nanoid } from "@reduxjs/toolkit";
-import { Wrapper, Ul, Li, Label } from "./styled";
+import { Wrapper, Button } from "./styled";
+import CardCalender from "./CardCalender";
 
 const Content = ({ content }) => (
   <div>
     <h1>Lista dostępności</h1>
-    <Wrapper> {content} </Wrapper>
+    {content}
   </div>
 );
-
-const ReservationCheckbox = ({ reservation, setReservationHandler }) => {
-  const [isChecked, setChecked] = useState(false);
-
-  return (
-    <Label 
-      disabled={reservation.reserved === 1}
-      checked={reservation.reserved === 1 ? true : isChecked}
-      >
-      <input
-        type="checkbox"
-        disabled={reservation.reserved === 1}
-        checked={reservation.reserved === 1 ? true : isChecked}
-        onChange={({ target }) => {
-          if (reservation.reserved === 0) {
-            setChecked(target.checked);
-            setReservationHandler(reservation.date.substring(0, 10));
-          }
-        }}
-      />
-      {reservation.date.substring(0, 10)}{" "}
-      {reservation.reserved === 1 ? " - zajęty" : isChecked ? "Zarezerwuj" : ""}
-    </Label>
-  );
-};
 
 const Calender = () => {
   const { id } = useParams();
@@ -54,6 +30,7 @@ const Calender = () => {
     } else {
       setReservation(selectedReservation.splice(index, 1));
     }
+    console.log(selectedReservation.length===0);
   };
 
   useEffect(() => {
@@ -63,15 +40,25 @@ const Calender = () => {
       setContent(`Mamy błąd... ${error.message}`);
     } else if (data) {
       setContent(
-        data.map((reservation) => (
-          <ReservationCheckbox
-            key={nanoid()}
-            reservation={reservation}
-            setReservationHandler={setReservationHandler}
-          />
-        ))
+        <>
+          <Wrapper>
+            {data.map((day) => (
+              <CardCalender
+                key={nanoid()}
+                day={day}
+                setReservation={setReservationHandler}
+              />
+            ))}
+          </Wrapper>
+          <Button
+            isHidden={selectedReservation.length===0}
+          >Potwierdź rezerwację
+          </Button>
+        </>
       );
+      
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, error, data, id]);
 
   return <Content content={content} />;
