@@ -4,7 +4,7 @@ export const Wrapper = styled.main`
   max-width: 1200px;
   margin: 180px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 30% 1fr;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDevice}px) {    
     display: flex;
