@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchStuffDetails from "./fetchStuffDetails";
 import Header from "../Header";
 import Calender from "./Calender";
-import { Wrapper, Img } from "./styled";
+import { Wrapper, StuffWrapper, Img } from "./styled";
 
 const Page = ({ content }) => (
   <>
@@ -29,11 +29,11 @@ const StuffDetails = () => {
     } else if (data) {
       setContent(
         <>
-          <div>
+          <StuffWrapper>
             <h1>{data[0].name}</h1>
             <Img src={`${BASE_URL}${data[0].img}`} alt="stuff" />
             <p>{data[0].description}</p>
-          </div>
+          </StuffWrapper>
           <Calender />
         </>
       );
