@@ -5,6 +5,7 @@ export const Wrapper = styled.main`
   margin: 180px auto;
   display: grid;
   grid-template-columns: 30% 1fr;
+  gap:20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDevice}px) {    
     display: flex;
@@ -14,6 +15,11 @@ export const Wrapper = styled.main`
     margin: 90px auto;
   }
 `;
+
+export const StuffWrapper = styled.div`  
+  overflow: hidden;
+`;
+
 
 export const Img = styled.img`    
   max-width: 324px;
