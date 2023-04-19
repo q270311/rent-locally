@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addRemoveReservation } from "../../reservationSlice";
 import { Label, Input } from "./styled";
 
-const CardCalender = ({ day, setReservation }) => {
+const CardCalender = ({ day }) => {
+  const dispatch = useDispatch();
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -16,7 +19,7 @@ const CardCalender = ({ day, setReservation }) => {
         onChange={({ target }) => {
           if (day.reserved === 0) {
             setChecked(target.checked);
-            setReservation(day.date.substring(0, 10));
+            dispatch(addRemoveReservation(day.date.substring(0, 10)));
           }
         }}
       />
