@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import { GlobalStyle } from "./core/GlobalStyle";
 import { theme } from "./core/theme";
 import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
+import store from "./core/store";
 import { HashRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -13,12 +15,14 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <HashRouter>
-        <App />
-      </HashRouter>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </ThemeProvider>
+    </Provider>
   </QueryClientProvider>
 );
 
