@@ -14,10 +14,14 @@ const reservationSlice = createSlice({
         state.reservation.splice(index, 1)
       }
     },
+    deleteReservation: (state) => {
+      state.reservation = []
+    },
   },
 })
 
-export const { addRemoveReservation } = reservationSlice.actions
+export const { addRemoveReservation, deleteReservation } =
+  reservationSlice.actions
 
 export const selectReservationState = (state) => state.reservation
 export const selectReservation = (state) =>

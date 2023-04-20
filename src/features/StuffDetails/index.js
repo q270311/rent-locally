@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { deleteReservation } from './reservationSlice'
 import fetchStuffDetails from './fetchStuffDetails'
 import Header from '../Header'
 import Calender from './Calender'
@@ -14,12 +16,17 @@ const Page = ({ content }) => (
 )
 
 const StuffDetails = () => {
+  const dispatch = useDispatch()
   const { id } = useParams()
   const { isLoading, error, data } = useQuery(['stuffDetails'], () =>
     fetchStuffDetails({ stuffId: id })
   )
   const [content, setContent] = useState(null)
   const BASE_URL = 'https://sharestuff.somee.com/img/stuff/'
+
+  useEffect(() => {
+    dispatch(deleteReservation())
+  }, [dispatch])
 
   useEffect(() => {
     if (isLoading) {
