@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from 'styled-components'
 
 export const SearchWrapper = styled.div`
   display: flex;
@@ -25,13 +25,13 @@ export const SearchWrapper = styled.div`
     order: 0;
     height: 27px;
   }
-`;
+`
 
 export const SearchIcon = styled.img`
   padding: 0 10px 0 8px;
   height: 20px;
   color: ${({ theme }) => theme.color.grey};
-`;
+`
 
 export const SearchInput = styled.input`
   color: ${({ theme }) => theme.color.cuttySark};
@@ -47,4 +47,4 @@ export const SearchInput = styled.input`
     height: 44px;
     border-radius: 33px;
   }
-`;
+`

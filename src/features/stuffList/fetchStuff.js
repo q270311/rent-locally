@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios'
 
 const fetchStuff = async () =>
   await axios
-    .get("https://sharestuff.onrender.com/api/stuff")
-    .then((response) => response.data);
+    .get('https://sharestuff.onrender.com/api/stuff')
+    .then((response) => response.data)
 
-export default fetchStuff;
+export default fetchStuff

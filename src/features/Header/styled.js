@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -13,7 +13,7 @@ export const StyledHeader = styled.header`
   -moz-box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
   box-shadow: 0px 8px 20px -14px rgba(66, 68, 90, 1);
   z-index: 999;
-`;
+`
 
 export const Wrapper = styled.div`
   height: 150px;
@@ -57,7 +57,7 @@ export const Wrapper = styled.div`
     height: auto;
     margin-bottom: 0px;
   }
-`;
+`
 
 export const WrapperSubtitle = styled.div`
   ${({ isScrolled }) =>
@@ -69,7 +69,7 @@ export const WrapperSubtitle = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDevice}px) {
     display: none;
   }
-`;
+`
 
 export const Title = styled.h1`
   grid-column: span 2;
@@ -77,13 +77,13 @@ export const Title = styled.h1`
   margin: 0px 20px 0px 0px;
   padding: 0px;
   letter-spacing: 2px;
-`;
+`
 
 export const Subtitle = styled.p`
   display: block;
   margin: 0px;
   padding: 0px;
-`;
+`
 
 export const Button = styled.button`
   margin: 0px 20px;
@@ -104,9 +104,9 @@ export const Button = styled.button`
     height: 30px;
     width: 250px;
   }
-`;
+`
 
 export const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: ${({ theme }) => theme.color.white};
-`;
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.white};
+`

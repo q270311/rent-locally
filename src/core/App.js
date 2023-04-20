@@ -1,7 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { toStuffList, toStuffDetails } from "./routes";
-import StuffList from "../features/StuffList";
-import StuffDetails from "../features/StuffDetails";
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { toStuffList, toStuffDetails } from './routes'
+import StuffList from '../features/StuffList'
+import StuffDetails from '../features/StuffDetails'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Route path="/" element={<Navigate to={toStuffList()} />} />
       {/* <Route path='*' element={<Error />} /> */}
     </Routes>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   padding-left: 20px;
@@ -15,4 +15,4 @@ export const Wrapper = styled.div`
     align-items: center;
     margin: 90px auto;
   }
-`;
+`

@@ -1,31 +1,31 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import fetchStuffDetails from "./fetchStuffDetails";
-import Header from "../Header";
-import Calender from "./Calender";
-import { Wrapper, StuffWrapper, Img } from "./styled";
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import fetchStuffDetails from './fetchStuffDetails'
+import Header from '../Header'
+import Calender from './Calender'
+import { Wrapper, StuffWrapper, Img } from './styled'
 
 const Page = ({ content }) => (
   <>
     <Header />
     <Wrapper> {content} </Wrapper>
   </>
-);
+)
 
 const StuffDetails = () => {
-  const { id } = useParams();
-  const { isLoading, error, data } = useQuery(["stuffDetails"], () =>
+  const { id } = useParams()
+  const { isLoading, error, data } = useQuery(['stuffDetails'], () =>
     fetchStuffDetails({ stuffId: id })
-  );
-  const [content, setContent] = useState(null);
-  const BASE_URL = "https://sharestuff.somee.com/img/stuff/";
+  )
+  const [content, setContent] = useState(null)
+  const BASE_URL = 'https://sharestuff.somee.com/img/stuff/'
 
   useEffect(() => {
     if (isLoading) {
-      setContent(`Trwa ładowanie...`);
+      setContent(`Trwa ładowanie...`)
     } else if (error) {
-      setContent(`Mamy błąd... ${error.message}`);
+      setContent(`Mamy błąd... ${error.message}`)
     } else if (data) {
       setContent(
         <>
@@ -36,11 +36,11 @@ const StuffDetails = () => {
           </StuffWrapper>
           <Calender />
         </>
-      );
+      )
     }
-  }, [isLoading, error, data, id]);
+  }, [isLoading, error, data, id])
 
-  return <Page content={content} />;
-};
+  return <Page content={content} />
+}
 
-export default StuffDetails;
+export default StuffDetails
