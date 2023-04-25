@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { deleteReservation } from './reservationSlice'
+import { deleteAllReservation } from './reservationSlice'
 import fetchStuffDetails from './fetchStuffDetails'
 import Header from '../Header'
 import Calender from './Calender'
@@ -25,7 +25,7 @@ const StuffDetails = () => {
   const BASE_URL = 'https://sharestuff.somee.com/img/stuff/'
 
   useEffect(() => {
-    dispatch(deleteReservation())
+    dispatch(deleteAllReservation())
   }, [dispatch])
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addRemoveReservation } from '../../reservationSlice'
+import { addDeleteReservation } from '../../reservationSlice'
 import { Label, Input } from './styled'
 
 const CardCalender = ({ day }) => {
@@ -19,7 +19,7 @@ const CardCalender = ({ day }) => {
         onChange={({ target }) => {
           if (day.reserved === 0) {
             setChecked(target.checked)
-            dispatch(addRemoveReservation(day.date.substring(0, 10)))
+            dispatch(addDeleteReservation(day.date.substring(0, 10)))
           }
         }}
       />
