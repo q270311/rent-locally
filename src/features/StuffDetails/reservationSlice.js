@@ -17,7 +17,6 @@ const reservationSlice = createSlice({
     },
     deleteAllReservation: (state) => {
       state.reservations = []
-      state.stuffID = null
     },
     setStuffID: (state, { payload }) => {
       state.stuffID = payload.stuffID
