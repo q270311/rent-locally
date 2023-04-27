@@ -2,9 +2,10 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useSelector, useDispatch } from 'react-redux'
 
 import {
+  selectReservations,
   selectReservationsRange,
   selectStuffID,
-  addDeleteReservation
+  addDeleteReservation,
 } from '../../reservationSlice'
 import pushReservations from './pushReservations'
 import { Wrapper, Button } from './styled'
@@ -12,6 +13,7 @@ import { Wrapper, Button } from './styled'
 const ConfirmReservationButton = () => {
   const dispatch = useDispatch()
   const stuffId = useSelector(selectStuffID)
+  const reservationNumber = useSelector(selectReservations).length
   const reservations = useSelector(selectReservationsRange)
   const queryClient = useQueryClient()
 
@@ -40,10 +42,9 @@ const ConfirmReservationButton = () => {
 
   return (
     <Wrapper>
-      <Button 
-      onClick={sendReservations}
-      visible=hidden
-      >Confirm reservation</Button>
+      <Button onClick={sendReservations} isHidden={reservationNumber < 1}>
+        Confirm reservation
+      </Button>
     </Wrapper>
   )
 }
