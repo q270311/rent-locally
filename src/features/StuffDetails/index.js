@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { deleteAllReservation } from './reservationSlice'
+import { deleteAllReservation, setStuffID } from './reservationSlice'
 import fetchStuffDetails from './fetchStuffDetails'
 import Header from '../Header'
 import Calender from './Calender'
@@ -26,7 +26,8 @@ const StuffDetails = () => {
 
   useEffect(() => {
     dispatch(deleteAllReservation())
-  }, [dispatch])
+    dispatch(setStuffID({stuffID:id}))
+  }, [dispatch, id])
 
   useEffect(() => {
     if (isLoading) {
