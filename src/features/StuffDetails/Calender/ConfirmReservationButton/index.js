@@ -6,6 +6,7 @@ import {
   selectReservationsRange,
   selectStuffID,
   addDeleteReservation,
+  deleteAllReservation,
 } from '../../reservationSlice'
 import pushReservations from './pushReservations'
 import { Wrapper, Button } from './styled'
@@ -37,6 +38,7 @@ const ConfirmReservationButton = () => {
           })
       )
     )
+    dispatch(deleteAllReservation)
     queryClient.invalidateQueries('reservations')
   }
 
