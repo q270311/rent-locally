@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const reservationSlice = createSlice({
   name: 'reservation',
   initialState: {
+    stuffID: null,
     reservations: [],
   },
   reducers: {
@@ -16,17 +17,22 @@ const reservationSlice = createSlice({
     },
     deleteAllReservation: (state) => {
       state.reservations = []
+      state.stuffID = null
+    },
+    setStuffID: (state, { payload }) => {
+      state.stuffID = payload.stuffID
     },
   },
 })
 
-export const { addDeleteReservation, deleteAllReservation } =
+export const { addDeleteReservation, deleteAllReservation, setStuffID } =
   reservationSlice.actions
 
 export const selectReservationState = (state) => state.reservation
 export const selectReservations = (state) =>
   selectReservationState(state).reservations
-export const selectDateRanges = (state) => {
+export const selectStuffID = (state) => selectReservationState(state).stuffID
+export const selectReservationsRange = (state) => {
   const sortedReservations = [
     ...selectReservationState(state).reservations,
   ].sort()
