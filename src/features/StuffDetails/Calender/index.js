@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectStuffID } from '../reservationSlice'
 import { useQuery } from '@tanstack/react-query'
 import fetchReservations from './fetchReservations'
 import { nanoid } from '@reduxjs/toolkit'
@@ -16,7 +17,7 @@ const CalenderContent = ({ title, content, extraContent }) => (
 )
 
 const Calender = () => {
-  const { id } = useParams()
+  const id = useSelector(selectStuffID)
   const { isLoading, error, data } = useQuery(['reservations'], () =>
     fetchReservations({ stuffId: id })
   )
