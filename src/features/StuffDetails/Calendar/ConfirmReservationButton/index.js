@@ -2,10 +2,8 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useSelector, useDispatch } from 'react-redux'
 
 import {
-  selectReservations,
   selectReservationsRange,
   selectStuffID,
-  addDeleteReservation,
   deleteAllReservation,
 } from '../../reservationSlice'
 import pushReservations from './pushReservations'
@@ -14,37 +12,31 @@ import { Wrapper, Button } from './styled'
 const ConfirmReservationButton = () => {
   const dispatch = useDispatch()
   const stuffId = useSelector(selectStuffID)
-  const reservationNumber = useSelector(selectReservations).length
-  const reservations = useSelector(selectReservationsRange)
+  const reservationsRange = useSelector(selectReservationsRange)
   const queryClient = useQueryClient()
 
-  const sendReservations = async () => {
+  const sendReservations = () => {
     Promise.all(
-      reservations.map((reservation) =>
+      reservationsRange.map((reservation) =>
         pushReservations({
           stuffId: stuffId,
           startDate: reservation.start,
           endDate: reservation.end,
-        })
-          .then(() => {
-            dispatch(addDeleteReservation(reservation.start))
-            dispatch(addDeleteReservation(reservation.end))
-          })
-          .catch((error) => {
-            console.error(
-              `Błąd podczas zapisywania rezerwacji: ${error}
+        }).catch((error) => {
+          console.error(
+            `Błąd podczas zapisywania rezerwacji: ${error}
               Rezerwacja ${reservation.start} - ${reservation.end} nie jest potwierdzona`
-            )
-          })
+          )
+        })
       )
     )
     dispatch(deleteAllReservation)
+    console.log(`removed All`)
     queryClient.invalidateQueries('reservations')
   }
-
   return (
     <Wrapper>
-      <Button onClick={sendReservations} isHidden={reservationNumber < 1}>
+      <Button onClick={sendReservations} isHidden={reservationsRange.length < 1}>
         Confirm reservation
       </Button>
     </Wrapper>

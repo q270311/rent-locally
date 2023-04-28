@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { deleteAllReservation, setStuffID } from './reservationSlice'
 import fetchStuffDetails from './fetchStuffDetails'
 import Header from '../Header'
-import Calender from './Calender'
+import Calendar from './Calendar'
 import { Wrapper, StuffWrapper, Img } from './styled'
 
 const Page = ({ content }) => (
@@ -42,7 +42,7 @@ const StuffDetails = () => {
             <Img src={`${BASE_URL}${data[0].img}`} alt="stuff" />
             <p>{data[0].description}</p>
           </StuffWrapper>
-          <Calender />
+          <Calendar />
         </>
       )
     }

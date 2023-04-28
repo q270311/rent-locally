@@ -5,10 +5,10 @@ import { useQuery } from '@tanstack/react-query'
 import fetchReservations from './fetchReservations'
 import { nanoid } from '@reduxjs/toolkit'
 import { Wrapper } from './styled'
-import CardCalender from './CardCalender'
+import CardCalendar from './CardCalendar'
 import ConfirmReservationButton from './ConfirmReservationButton'
 
-const CalenderContent = ({ title, content, extraContent }) => (
+const CalendarContent = ({ title, content, extraContent }) => (
   <div>
     <h1>{title}</h1>
     {content}
@@ -16,7 +16,7 @@ const CalenderContent = ({ title, content, extraContent }) => (
   </div>
 )
 
-const Calender = () => {
+const Calendar = () => {
   const id = useSelector(selectStuffID)
   const { isLoading, error, data } = useQuery(['reservations'], () =>
     fetchReservations({ stuffId: id })
@@ -32,7 +32,7 @@ const Calender = () => {
       setContent(
         <Wrapper>
           {data.map((day) => (
-            <CardCalender key={nanoid()} day={day} />
+            <CardCalendar key={nanoid()} day={day} />
           ))}
         </Wrapper>
       )
@@ -41,7 +41,7 @@ const Calender = () => {
   }, [isLoading, error, data, id])
 
   return (
-    <CalenderContent
+    <CalendarContent
       title={`Booking calendar`}
       content={content}
       extraContent={<ConfirmReservationButton />}
@@ -49,4 +49,4 @@ const Calender = () => {
   )
 }
 
-export default Calender
+export default Calendar
