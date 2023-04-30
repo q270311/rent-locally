@@ -22,21 +22,26 @@ const ConfirmReservationButton = () => {
           stuffId: stuffId,
           startDate: reservation.start,
           endDate: reservation.end,
-        }).catch((error) => {
-          console.error(
-            `Błąd podczas zapisywania rezerwacji: ${error}
-              Rezerwacja ${reservation.start} - ${reservation.end} nie jest potwierdzona`
-          )
         })
+          .then(() => {
+            queryClient.invalidateQueries('reservations')
+          })
+          .catch((error) => {
+            console.error(
+              `Błąd podczas zapisywania rezerwacji: ${error}
+              Rezerwacja ${reservation.start} - ${reservation.end} nie jest potwierdzona`
+            )
+          })
       )
     )
-    dispatch(deleteAllReservation)
-    console.log(`removed All`)
-    queryClient.invalidateQueries('reservations')
+    dispatch(deleteAllReservation())
   }
   return (
     <Wrapper>
-      <Button onClick={sendReservations} isHidden={reservationsRange.length < 1}>
+      <Button
+        onClick={sendReservations}
+        isHidden={reservationsRange.length < 1}
+      >
         Confirm reservation
       </Button>
     </Wrapper>
