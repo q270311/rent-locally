@@ -3,11 +3,43 @@
 This is ads portal.
 Share an item for rent for somebody nearby.
 Rent - when you're not using it - to earn.
-Borrow - when you need
+Borrow - if you need and pay only for use
 
+![How it us gif](src/img/rent-locally.gif)
 ## Demo
 
 https://q270311.github.io/rent-locally/
+
+## Description
+
+The application allows you to book the rental of a given item. 
+On the main page, select the item you want to rent. On the item details page, you will find a detailed description and the owner's phone number. 
+To book an item, select days on the calendar and click the "confirm booking" button. The calendar shows the reservation for the next 30 days
+
+## How will the app be developed further?
+- adding typescript(!)
+- search engine
+- menu (product categories)
+- booking confirmation
+- booking password (provided to the borrower)
+- loading, err, not fund page
+- mobile view
+
+### Contributors
+The project was created by Michał Bałdyga
+
+### Tech stack
+[![My Skills](https://skillicons.dev/icons?i=js,react,html,css,redux,git,github)](https://skillicons.dev)
+More details about tech:
+- React.js 
+   - hooks: useState, useEffect
+   - styled components
+   - router v6
+- JS axios async/await
+- **TanStack Query v4**
+- Redux | Redux Toolkit
+- ES6+ features 
+- Layout: flex | grid
 
 # Getting Started with Create React App
 
