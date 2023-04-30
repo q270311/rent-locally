@@ -9,24 +9,13 @@ const reservationSlice = createSlice({
   reducers: {
     addReservation: (state, { payload }) => {
       state.reservations.push(payload)
-      console.log([...state.reservations])
     },
     deleteReservation: (state, { payload }) => {
       const index = state.reservations.findIndex((date) => date === payload)
       state.reservations.splice(index, 1)
-      console.log([...state.reservations])
-    },
-    addDeleteReservation: (state, { payload }) => {
-      const index = state.reservations.findIndex((date) => date === payload)
-      if (index === -1) {
-        state.reservations.push(payload)
-      } else {
-        state.reservations.splice(index, 1)
-      }
     },
     deleteAllReservation: (state) => {
       state.reservations.splice(0, state.reservations.length)
-      console.log([...state.reservations])
     },
     setStuffID: (state, { payload }) => {
       state.stuffID = payload.stuffID
@@ -34,8 +23,12 @@ const reservationSlice = createSlice({
   },
 })
 
-export const { addReservation, deleteReservation, addDeleteReservation, deleteAllReservation, setStuffID } =
-  reservationSlice.actions
+export const {
+  addReservation,
+  deleteReservation,
+  deleteAllReservation,
+  setStuffID,
+} = reservationSlice.actions
 
 export const selectReservationState = (state) => state.reservation
 export const selectReservations = (state) =>
@@ -50,8 +43,7 @@ export const isReservationDate = (state, searchedDate) => {
 
 export const selectStuffID = (state) => selectReservationState(state).stuffID
 export const selectReservationsRange = (state) => {
-  if(selectReservationState(state).reservations.length===0)
-    return []
+  if (selectReservationState(state).reservations.length === 0) return []
 
   const sortedReservations = [
     ...selectReservationState(state).reservations,
@@ -72,7 +64,6 @@ export const selectReservationsRange = (state) => {
     end = date
   }
   reservationsRanges = [...reservationsRanges, { start, end }]
-  console.log([...reservationsRanges])
 
   return reservationsRanges
 }
