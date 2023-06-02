@@ -25,3 +25,7 @@ export const Img = styled.img`
   border-radius: 20px;
   margin: 10px;
 `
+
+export const Description = styled.p`
+  grid-column: span 2;
+`

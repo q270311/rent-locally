@@ -6,7 +6,7 @@ import { deleteAllReservation, setStuffID } from './reservationSlice'
 import fetchStuffDetails from './fetchStuffDetails'
 import Header from '../Header'
 import Calendar from './Calendar'
-import { Wrapper, StuffWrapper, Img } from './styled'
+import { Wrapper, StuffWrapper, Img, Description } from './styled'
 
 const Page = ({ content }) => (
   <>
@@ -26,7 +26,7 @@ const StuffDetails = () => {
 
   useEffect(() => {
     dispatch(deleteAllReservation())
-    dispatch(setStuffID({stuffID:id}))
+    dispatch(setStuffID({ stuffID: id }))
   }, [dispatch, id])
 
   useEffect(() => {
@@ -40,9 +40,9 @@ const StuffDetails = () => {
           <StuffWrapper>
             <h1>{data[0].name}</h1>
             <Img src={`${BASE_URL}${data[0].img}`} alt="stuff" />
-            <p>{data[0].description}</p>
           </StuffWrapper>
           <Calendar />
+          <Description>{data[0].description}</Description>
         </>
       )
     }
