@@ -9,10 +9,11 @@ export const Wrapper = styled.div`
   grid-gap: 5px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileDevice}px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 90px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }
+`
+
+export const StyledCalendarContent = styled.div`
+  width: 100%;
 `

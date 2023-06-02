@@ -4,16 +4,16 @@ import { selectStuffID } from '../reservationSlice'
 import { useQuery } from '@tanstack/react-query'
 import fetchReservations from './fetchReservations'
 import { nanoid } from '@reduxjs/toolkit'
-import { Wrapper } from './styled'
+import { Wrapper, StyledCalendarContent } from './styled'
 import CardCalendar from './CardCalendar'
 import ConfirmReservationButton from './ConfirmReservationButton'
 
 const CalendarContent = ({ title, content, extraContent }) => (
-  <div>
+  <StyledCalendarContent>
     <h1>{title}</h1>
     {content}
     {extraContent}
-  </div>
+  </StyledCalendarContent>
 )
 
 const Calendar = () => {
